@@ -52,6 +52,6 @@ public class MessageResource {
 	@GET
 	@Path("/{messageId}")
 	public Message getMessage(@PathParam("messageId") int id) {
-		return messageService.getMessage(id);
+      return messageService.getMessage(id);
 	}
 }

@@ -21,25 +21,25 @@ public class MessageService {
   
 
   public MessageService() {
-		messages.put(1, new Message(1, "Hello World", "kimfri")); 
-		messages.put(2, new Message(2, "Hello Jersey", "kimfri"));
+//		messages.put(1, new Message(1, "Hello World", "kimfri")); 
+//		messages.put(2, new Message(2, "Hello Jersey", "kimfri"));
 //    mch.getMongoCollection(COLLECTION).insertOne((new Message(1, "Hello !", "kim")).getDocument());
 //    mch.getMongoCollection(COLLECTION).insertOne((new Message(2, "Hello!", "Wille")).getDocument());
    
   }
 
   public List<Message> getAllMessages() {
-		return new ArrayList<Message>(messages.values()); 
-//    Document query = new Document();
-//    List<Document> docs = (List<Document>) mch
-//            .getMongoCollection(COLLECTION)
-//            .find(query)
-//            .into(new ArrayList<Document>());
-//    List<Message> messages = new ArrayList<>();
-//    for (Document doc : docs) {
-//      messages.add(Message.getMessageFromDocument(doc));
-//    }
-//    return messages;
+//		return new ArrayList<Message>(messages.values()); 
+    Document query = new Document();
+    List<Document> docs = (List<Document>) mch
+            .getMongoCollection(COLLECTION)
+            .find(query)
+            .into(new ArrayList<Document>());
+    List<Message> messages = new ArrayList<>();
+    for (Document doc : docs) {
+      messages.add(Message.getMessageFromDocument(doc));
+    }
+    return messages;
   }
 
   public Message getMessage(long id) {
@@ -56,6 +56,7 @@ public class MessageService {
     for (Document doc : docs) {
       messages.add(Message.getMessageFromDocument(doc));
     }
+    Message m = messages.get(0);
     return messages.get(0);
   }
 
